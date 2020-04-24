@@ -9,11 +9,15 @@
 -- The handlers are based on the OpenResty handlers, see the OpenResty docs for details
 -- on when exactly they are invoked and what limitations each handler has.
 ---------------------------------------------------------------------------------------------
-
+--
+--
+  --  sudo apt-get install -y libpcre3-dev , lua-rex-pcre , 
+  --  luarocks install lrexlib-pcre
+  --  copy cp /kong-plugin/kong/plugins/myplugin/resty/libc.musl-x86_64.so.1 /lib
 
 
 local plugin = {
-  PRIORITY = 1000, -- set the plugin priority, which determines plugin execution order
+  PRIORITY = 10000, -- set the plugin priority, which determines plugin execution order
   VERSION = "0.1",
 }
 
@@ -31,6 +35,15 @@ function plugin:init_worker()
 
   -- your custom code here
   kong.log.debug("saying hi from the 'init_worker' handler")
+
+  -- use resty.core for performance improvement, see the status note above
+  require "resty.core"
+
+  -- require the base module
+  local lua_resty_waf = require "kong.plugins.myplugin.resty.waf"
+
+  -- perform some preloading and optimization
+  lua_resty_waf.init()
 
 end --]]
 
@@ -64,36 +77,53 @@ function plugin:access(plugin_conf)
 
   -- your custom code here
   kong.log.inspect(plugin_conf)   -- check the logs for a pretty-printed config!
-  ngx.req.set_header(plugin_conf.request_header, "this is on a request")
+  -- ngx.req.set_header(plugin_conf.request_header, "this is on a request")
+
+  local lua_resty_waf = require "kong.plugins.myplugin.resty.waf"
+  local waf = lua_resty_waf:new()
+
+  -- define options that will be inherited across all scopes
+  waf:set_option("debug", true)
+  waf:set_option("mode", "ACTIVE")
+  waf:set_option("error_response", plugin_conf.error_response)
+
+  -- this may be desirable for low-traffic or testing sites
+  -- by default, event logs are not written until the buffer is full
+  -- for testing, flush the log buffer every 5 seconds
+  --
+  -- this is only necessary when configuring a remote TCP/UDP
+  -- socket server for event logs. otherwise, this is ignored
+  waf:set_option("event_log_periodic_flush", 5)
+
+  -- run the firewall
+  waf:exec()
+
 
 end --]]
 
 
 ---[[ runs in the 'header_filter_by_lua_block'
 function plugin:header_filter(plugin_conf)
-
-  -- your custom code here, for example;
-  ngx.header[plugin_conf.response_header] = "this is on the response"
-
+  local lua_resty_waf = require "kong.plugins.myplugin.resty.waf"
+  local waf = lua_resty_waf:new()
+  waf:exec()
 end --]]
 
 
---[[ runs in the 'body_filter_by_lua_block'
+ -- runs in the 'body_filter_by_lua_block'
 function plugin:body_filter(plugin_conf)
+  local lua_resty_waf = require "kong.plugins.myplugin.resty.waf"
+  local waf = lua_resty_waf:new()
+  waf:exec()
+end 
 
-  -- your custom code here
-  kong.log.debug("saying hi from the 'body_filter' handler")
 
-end --]]
-
-
---[[ runs in the 'log_by_lua_block'
+ -- runs in the 'log_by_lua_block'
 function plugin:log(plugin_conf)
-
-  -- your custom code here
-  kong.log.debug("saying hi from the 'log' handler")
-
-end --]]
+  local lua_resty_waf = require "kong.plugins.myplugin.resty.waf"
+  local waf = lua_resty_waf:new()
+  waf:exec()
+end 
 
 
 -- return our plugin object

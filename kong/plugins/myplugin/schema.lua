@@ -14,24 +14,11 @@ local schema = {
         type = "record",
         fields = {
           -- a standard defined field (typedef), with some customizations
-          { request_header = typedefs.header_name {
-              required = true,
-              default = "Hello-World" } },
-          { response_header = typedefs.header_name {
-              required = true,
-              default = "Bye-World" } },
-          { ttl = { -- self defined field
-              type = "integer",
-              default = 600,
-              required = true,
-              gt = 0, }}, -- adding a constraint for the value
-        },
-        entity_checks = {
-          -- add some validation rules across fields
-          -- the following is silly because it is always true, since they are both required
-          { at_least_one_of = { "request_header", "response_header" }, },
-          -- We specify that both header-names cannot be the same
-          { distinct = { "request_header", "response_header"} },
+          { error_response = {
+              type = "string",
+              required = false,
+              default = '<html><body> Access Denied {{HOST}} {{CURRENT_DATE}} - IP: {{IP}} - ID: {{UNIQUE_ID}}</body><html>'            } 
+          },
         },
       },
     },

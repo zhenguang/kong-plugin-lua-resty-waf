@@ -1,16 +1,22 @@
-[![Build Status][badge-travis-image]][badge-travis-url]
-
-Kong plugin template
+Kong plugin for lua-resty-waf
 ====================
+I've use kong-plugin default templating and start porting lua-resty-waf code into the plugin template, i've yet rename it to kong-lua-resty-waf project
 
-This repository contains a very simple Kong plugin template to get you
-up and running quickly for developing your own plugins.
+#### My personal development notes
+https://gist.github.com/zhenguang/df3715a59b743d522484f4c788d3f144
 
-This template was designed to work with the
-[`kong-pongo`](https://github.com/Kong/kong-pongo) and
-[`kong-vagrant`](https://github.com/Kong/kong-vagrant) development environments.
+## Todo
+- Create docker image for compiling lua-resty-waf dependency binary
+  - Move dependency to to correct folder
+  - sed rename ***resty.logger.socket*** to **example**: ***kong.plugins.myplugin.resty.logger.socket***
+- Fork [lua-resty-waf](https://github.com/p0pr0ck5/lua-resty-waf) to update with custom code to fit lua-resty-waf
 
-Please check out those repos `README` files for usage instructions.
 
-[badge-travis-url]: https://travis-ci.org/Kong/kong-plugin/branches
-[badge-travis-image]: https://travis-ci.com/Kong/kong-plugin.svg?branch=master
+## Thanks
+[Kong/kong-plugin](https://github.com/Kong/kong-plugin)
+
+[p0pr0ck5/lua-resty-waf](https://github.com/p0pr0ck5/lua-resty-waf)
+
+[SpiderLabs/owasp-modsecurity-crs](https://github.com/SpiderLabs/owasp-modsecurity-crs)
+
+[titansec/OpenWAF](https://github.com/titansec/OpenWAF)
