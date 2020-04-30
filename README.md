@@ -1,18 +1,14 @@
-Kong plugin for kong-plugin-lua-resty-waf
+Kong plugin for lua-resty-waf
 ====================
-I've used kong-plugin default templating and start porting lua-resty-waf code into the plugin template
-
-## Todo
-- Create docker image for compiling lua-resty-waf dependency binary
-  - Move dependency to to correct folder
-  - sed rename ***resty.logger.socket*** to **example**: ***kong.plugins.myplugin.resty.logger.socket***
-- Fork [lua-resty-waf](https://github.com/p0pr0ck5/lua-resty-waf) to update with custom code to fit lua-resty-waf
-
+Ported p0pr0ck5/lua-resty-waf to Kong
+- Added WAF error page
+- Updated SQLi rules from SpiderLabs/owasp-modsecurity-crs
 
 ## Install
-libpcre++-dev
-luarocks install lrexlib-PCRE
-luarocks install kong-plugin-lua-resty-waf
+Install libpcre dependency
+- apt-get install libpcre++-dev
+- luarocks install lrexlib-PCRE
+- luarocks install kong-plugin-lua-resty-waf
 
 ## Thanks
 [Kong/kong-plugin](https://github.com/Kong/kong-plugin)
