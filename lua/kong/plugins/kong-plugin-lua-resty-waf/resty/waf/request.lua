@@ -3,9 +3,9 @@ local _M = {}
 local cookiejar = require "resty.cookie"
 local upload	= require "resty.upload"
 
-local base   = require "kong.plugins.lua-resty-waf.resty.waf.base"
-local logger = require "kong.plugins.lua-resty-waf.resty.waf.log"
-local util   = require "kong.plugins.lua-resty-waf.resty.waf.util"
+local base   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
+local logger = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
+local util   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.util"
 
 local table_concat = table.concat
 local table_insert = table.insert

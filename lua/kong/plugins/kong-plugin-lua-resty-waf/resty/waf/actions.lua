@@ -1,9 +1,9 @@
 local _M = {}
 
-local base    = require "kong.plugins.lua-resty-waf.resty.waf.base"
-local logger  = require "kong.plugins.lua-resty-waf.resty.waf.log"
-local storage = require "kong.plugins.lua-resty-waf.resty.waf.storage"
-local util    = require "kong.plugins.lua-resty-waf.resty.waf.util"
+local base    = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
+local logger  = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
+local storage = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.storage"
+local util    = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.util"
 
 _M.version = base.version
 

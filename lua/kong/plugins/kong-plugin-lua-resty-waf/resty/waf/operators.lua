@@ -1,13 +1,13 @@
 local _M = {}
 
-local ac        = require "kong.plugins.lua-resty-waf.resty.waf.load_ac"
-local base      = require "kong.plugins.lua-resty-waf.resty.waf.base"
+local ac        = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.load_ac"
+local base      = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
 local bit       = require "bit"
-local dns       = require "kong.plugins.lua-resty-waf.resty.dns.resolver"
-local iputils   = require "kong.plugins.lua-resty-waf.resty.iputils"
-local libinject = require "kong.plugins.lua-resty-waf.resty.libinjection"
-local logger    = require "kong.plugins.lua-resty-waf.resty.waf.log"
-local util      = require "kong.plugins.lua-resty-waf.resty.waf.util"
+local dns       = require "kong.plugins.kong-plugin-lua-resty-waf.resty.dns.resolver"
+local iputils   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.iputils"
+local libinject = require "kong.plugins.kong-plugin-lua-resty-waf.resty.libinjection"
+local logger    = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
+local util      = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.util"
 
 local string_find = string.find
 local string_gsub = string.gsub

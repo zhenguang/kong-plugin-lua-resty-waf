@@ -1,8 +1,8 @@
 local _M = {}
 
-local base   = require "kong.plugins.lua-resty-waf.resty.waf.base"
+local base   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
 local cjson  = require "cjson"
-local logger = require "kong.plugins.lua-resty-waf.resty.waf.log"
+local logger = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
 
 local re_find       = ngx.re.find
 local string_byte   = string.byte

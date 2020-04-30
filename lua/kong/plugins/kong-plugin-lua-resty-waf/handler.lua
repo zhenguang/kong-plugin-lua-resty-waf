@@ -40,7 +40,7 @@ function plugin:init_worker()
   require "resty.core"
 
   -- require the base module
-  local lua_resty_waf = require "kong.plugins.lua-resty-waf.resty.waf"
+  local lua_resty_waf = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf"
 
   -- perform some preloading and optimization
   lua_resty_waf.init()
@@ -79,7 +79,7 @@ function plugin:access(plugin_conf)
   -- kong.log.inspect(plugin_conf)   -- check the logs for a pretty-printed config!
   -- ngx.req.set_header(plugin_conf.request_header, "this is on a request")
 
-  local lua_resty_waf = require "kong.plugins.lua-resty-waf.resty.waf"
+  local lua_resty_waf = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf"
   local waf = lua_resty_waf:new()
 
   -- define options that will be inherited across all scopes
@@ -104,7 +104,7 @@ end --]]
 
 ---[[ runs in the 'header_filter_by_lua_block'
 function plugin:header_filter(plugin_conf)
-  local lua_resty_waf = require "kong.plugins.lua-resty-waf.resty.waf"
+  local lua_resty_waf = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf"
   local waf = lua_resty_waf:new()
   waf:exec()
 end --]]
@@ -112,7 +112,7 @@ end --]]
 
  -- runs in the 'body_filter_by_lua_block'
 function plugin:body_filter(plugin_conf)
-  local lua_resty_waf = require "kong.plugins.lua-resty-waf.resty.waf"
+  local lua_resty_waf = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf"
   local waf = lua_resty_waf:new()
   waf:exec()
 end 
@@ -120,7 +120,7 @@ end
 
  -- runs in the 'log_by_lua_block'
 function plugin:log(plugin_conf)
-  local lua_resty_waf = require "kong.plugins.lua-resty-waf.resty.waf"
+  local lua_resty_waf = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf"
   local waf = lua_resty_waf:new()
   waf:exec()
 end 

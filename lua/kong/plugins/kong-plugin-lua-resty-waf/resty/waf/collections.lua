@@ -1,9 +1,9 @@
 local _M = {}
 
-local base      = require "kong.plugins.lua-resty-waf.resty.waf.base"
-local logger    = require "kong.plugins.lua-resty-waf.resty.waf.log"
-local request   = require "kong.plugins.lua-resty-waf.resty.waf.request"
-local util      = require "kong.plugins.lua-resty-waf.resty.waf.util"
+local base      = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
+local logger    = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
+local request   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.request"
+local util      = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.util"
 
 local string_format = string.format
 local string_match  = string.match

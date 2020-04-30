@@ -1,10 +1,10 @@
 local _M = {}
 
-local base   = require "kong.plugins.lua-resty-waf.resty.waf.base"
-local hdec   = require "kong.plugins.lua-resty-waf.resty.htmlentities"
+local base   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.base"
+local hdec   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.htmlentities"
 local ffi    = require "ffi"
-local logger = require "kong.plugins.lua-resty-waf.resty.waf.log"
-local util   = require "kong.plugins.lua-resty-waf.resty.waf.util"
+local logger = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.log"
+local util   = require "kong.plugins.kong-plugin-lua-resty-waf.resty.waf.util"
 
 local ffi_cpy    = ffi.copy
 local ffi_new    = ffi.new
