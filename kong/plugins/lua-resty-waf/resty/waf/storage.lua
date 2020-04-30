@@ -1,9 +1,9 @@
 local _M = {}
 
-local base   = require "kong.plugins.myplugin.resty.waf.base"
+local base   = require "kong.plugins.lua-resty-waf.resty.waf.base"
 local cjson  = require "cjson"
-local logger = require "kong.plugins.myplugin.resty.waf.log"
-local util   = require "kong.plugins.myplugin.resty.waf.util"
+local logger = require "kong.plugins.lua-resty-waf.resty.waf.log"
+local util   = require "kong.plugins.lua-resty-waf.resty.waf.util"
 
 _M.version = base.version
 
@@ -17,7 +17,7 @@ function _M.initialize(waf, storage, col)
 		logger.fatal_fail(backend .. " is not a valid persistent storage backend")
 	end
 
-	local backend_m = require("kong.plugins.myplugin.resty.waf.storage." .. backend)
+	local backend_m = require("kong.plugins.lua-resty-waf.resty.waf.storage." .. backend)
 
 	if waf._debug == true then ngx.log(waf._debug_log_level, '[', waf.transaction_id, '] ', "Initializing storage type " .. backend) end
 
@@ -122,7 +122,7 @@ function _M.persist(waf, storage)
 		logger.fatal_fail(backend .. " is not a valid persistent storage backend")
 	end
 
-	local backend_m = require("kong.plugins.myplugin.resty.waf.storage." .. backend)
+	local backend_m = require("kong.plugins.lua-resty-waf.resty.waf.storage." .. backend)
 
 	if not util.table_has_key(backend, _valid_backends) then
 		logger.fatal_fail(backend .. " is not a valid persistent storage backend")

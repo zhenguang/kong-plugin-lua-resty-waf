@@ -1,6 +1,6 @@
 local _M = {}
 
-local base = require "kong.plugins.myplugin.resty.waf.base"
+local base = require "kong.plugins.lua-resty-waf.resty.waf.base"
 
 local rex = require "rex_pcre"
 

@@ -1,10 +1,10 @@
 local _M = {}
 
-local base    = require "kong.plugins.myplugin.resty.waf.base"
+local base    = require "kong.plugins.lua-resty-waf.resty.waf.base"
 local cjson   = require "cjson"
-local logger  = require "kong.plugins.myplugin.resty.waf.log"
+local logger  = require "kong.plugins.lua-resty-waf.resty.waf.log"
 local redis_m = require "resty.redis"
-local storage = require "kong.plugins.myplugin.resty.waf.storage"
+local storage = require "kong.plugins.lua-resty-waf.resty.waf.storage"
 
 _M.version = base.version
 

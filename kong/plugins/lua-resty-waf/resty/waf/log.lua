@@ -1,8 +1,8 @@
 local _M = {}
 
-local base          = require "kong.plugins.myplugin.resty.waf.base"
+local base          = require "kong.plugins.lua-resty-waf.resty.waf.base"
 local cjson         = require "cjson"
-local socket_logger = require "kong.plugins.myplugin.resty.logger.socket"
+local socket_logger = require "kong.plugins.lua-resty-waf.resty.logger.socket"
 
 _M.version = base.version
 

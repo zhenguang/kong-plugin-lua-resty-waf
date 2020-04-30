@@ -1,18 +1,18 @@
 local _M = {}
 
-local actions       = require "kong.plugins.myplugin.resty.waf.actions"
-local base          = require "kong.plugins.myplugin.resty.waf.base"
-local calc          = require "kong.plugins.myplugin.resty.waf.rule_calc"
-local collections_t = require "kong.plugins.myplugin.resty.waf.collections"
-local logger        = require "kong.plugins.myplugin.resty.waf.log"
-local operators     = require "kong.plugins.myplugin.resty.waf.operators"
-local options       = require "kong.plugins.myplugin.resty.waf.options"
-local phase_t       = require "kong.plugins.myplugin.resty.waf.phase"
-local random        = require "kong.plugins.myplugin.resty.waf.random"
-local storage       = require "kong.plugins.myplugin.resty.waf.storage"
-local transform_t   = require "kong.plugins.myplugin.resty.waf.transform"
-local translate     = require "kong.plugins.myplugin.resty.waf.translate"
-local util          = require "kong.plugins.myplugin.resty.waf.util"
+local actions       = require "kong.plugins.lua-resty-waf.resty.waf.actions"
+local base          = require "kong.plugins.lua-resty-waf.resty.waf.base"
+local calc          = require "kong.plugins.lua-resty-waf.resty.waf.rule_calc"
+local collections_t = require "kong.plugins.lua-resty-waf.resty.waf.collections"
+local logger        = require "kong.plugins.lua-resty-waf.resty.waf.log"
+local operators     = require "kong.plugins.lua-resty-waf.resty.waf.operators"
+local options       = require "kong.plugins.lua-resty-waf.resty.waf.options"
+local phase_t       = require "kong.plugins.lua-resty-waf.resty.waf.phase"
+local random        = require "kong.plugins.lua-resty-waf.resty.waf.random"
+local storage       = require "kong.plugins.lua-resty-waf.resty.waf.storage"
+local transform_t   = require "kong.plugins.lua-resty-waf.resty.waf.transform"
+local translate     = require "kong.plugins.lua-resty-waf.resty.waf.translate"
+local util          = require "kong.plugins.lua-resty-waf.resty.waf.util"
 
 local table_insert = table.insert
 local table_sort   = table.sort

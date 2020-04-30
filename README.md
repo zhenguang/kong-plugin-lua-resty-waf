@@ -1,9 +1,6 @@
 Kong plugin for lua-resty-waf
 ====================
-I've use kong-plugin default templating and start porting lua-resty-waf code into the plugin template, i've yet rename it to kong-lua-resty-waf project
-
-#### My personal development notes
-https://gist.github.com/zhenguang/df3715a59b743d522484f4c788d3f144
+I've used kong-plugin default templating and start porting lua-resty-waf code into the plugin template
 
 ## Todo
 - Create docker image for compiling lua-resty-waf dependency binary

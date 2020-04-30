@@ -1,4 +1,4 @@
-package = "kong-plugin-myplugin"  -- TODO: rename, must match the info in the filename of this rockspec!
+package = "kong-plugin-lua-resty-waf"  -- TODO: rename, must match the info in the filename of this rockspec!
                                   -- as a convention; stick to the prefix: `kong-plugin-`
 version = "0.1.0-1"               -- TODO: renumber, must match the info in the filename of this rockspec!
 -- The version '0.1.0' is the source code version, the trailing '1' is the version of this rockspec.
@@ -9,16 +9,16 @@ version = "0.1.0-1"               -- TODO: renumber, must match the info in the 
 -- Here we extract it from the package name.
 local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "myplugin"
 
-supported_platforms = {"linux", "macosx"}
+supported_platforms = {"linux"}
 source = {
-  url = "http://github.com/Kong/kong-plugin.git",
+  url = "http://github.com/zhenguang/kong-plugin-lua-resty-waf.git",
   tag = "0.1.0"
 }
 
 description = {
-  summary = "Kong is a scalable and customizable API Management Layer built on top of Nginx.",
+  summary = "Porting p0pr0ck5/lua-resty-waf to Kong",
   homepage = "http://getkong.org",
-  license = "Apache 2.0"
+  license = "GNU General Public License"
 }
 
 dependencies = {
