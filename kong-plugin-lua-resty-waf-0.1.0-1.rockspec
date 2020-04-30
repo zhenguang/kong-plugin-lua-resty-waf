@@ -7,28 +7,32 @@ version = "0.1.0-1"               -- TODO: renumber, must match the info in the 
 
 -- TODO: This is the name to set in the Kong configuration `plugins` setting.
 -- Here we extract it from the package name.
-local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "myplugin"
+local pluginName = "kong-plugin-lua-resty-waf"  -- "myplugin"
 
 supported_platforms = {"linux"}
 source = {
-  url = "http://github.com/zhenguang/kong-plugin-lua-resty-waf.git",
+  url = "git://github.com/zhenguang/kong-plugin-lua-resty-waf",
   tag = "0.1.0"
 }
 
 description = {
   summary = "Porting p0pr0ck5/lua-resty-waf to Kong",
-  homepage = "http://getkong.org",
+  homepage = "https://github.com/zhenguang/kong-plugin-lua-resty-waf",
   license = "GNU General Public License"
 }
 
 dependencies = {
+   "lrexlib-pcre",
 }
 
 build = {
   type = "builtin",
   modules = {
     -- TODO: add any additional files that the plugin consists of
-    ["kong.plugins."..pluginName..".handler"] = "kong/plugins/"..pluginName.."/handler.lua",
-    ["kong.plugins."..pluginName..".schema"] = "kong/plugins/"..pluginName.."/schema.lua",
-  }
+    ["kong.plugins."..pluginName..".handler"] = "lua/kong/plugins/"..pluginName.."/handler.lua",
+    ["kong.plugins."..pluginName..".schema"] = "lua/kong/plugins/"..pluginName.."/schema.lua",
+  },
+  copy_directories = { 
+      ["lua.kong.plugins."..pluginName..".resty"] = "lua/kong/plugins/kong-plugin-lua-resty-waf/resty/"
+  },
 }
